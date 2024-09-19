@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import validator from 'validator';
 import userContext from '../context/userContext';
-import { getUserDetails } from '../services/ServiceWorkers';
+import { getUserDetails } from '../services/serviceWorkers';
 
 function Login() {
   const initialState = { uname: "", gmail: "", pwd: "" };
