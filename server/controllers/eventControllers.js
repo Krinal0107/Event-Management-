@@ -99,4 +99,4 @@ const searchEvent = async (req, res) => {
 }
 
 
-module.exports = { addEvent, getEvents, joinEvent }
+module.exports = { addEvent, getEvents, joinEvent, searchEvent }
