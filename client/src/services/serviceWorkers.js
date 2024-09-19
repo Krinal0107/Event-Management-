@@ -1,6 +1,6 @@
 import Axios from 'axios';
 
-const BASE_URL = "https://event-management-5qoifdg.vercel.app//api";
+const BASE_URL = "https://event-management-azure-tau.vercel.app/api";
 
 // REGISTER
 export const createUserDetails = async (userDetails) => {
