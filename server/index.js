@@ -12,6 +12,11 @@ const { PORT, MONGO_URI } = process.env;
 app.use(express.json({extended: false}));
 app.use(cors({origin: "*", Credential: true, methods: ["GET", "POST", "PUT", "DELETE"]}));
 
+app.get('/', (req, res) => {
+    res.send('<h1>Hello</h1>')
+})
+
+
 // Database and server listening
 mongoose.connect(MONGO_URI)
     .then(() => {
