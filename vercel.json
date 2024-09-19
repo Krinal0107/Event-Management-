@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "server/index.js",  // Backend entry point in the server folder
+      "use": "@vercel/node"
+    },
+    {
+      "src": "client/package.json",  // Frontend build command in the client folder
+      "use": "@vercel/static-build"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",  // Route all API requests to the backend
+      "dest": "/server/index.js"
+    },
+    {
+      "src": "/(.*)",  // Route all other requests to the frontend
+      "dest": "/client/$1"
+    }
+  ],
+  "static-build": {
+    "buildCommand": "npm run build",  // Build the React app
+    "outputDirectory": "build"  // The output folder for the built React app
+  }
+}
