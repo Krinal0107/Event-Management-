@@ -10,7 +10,17 @@ const { PORT, MONGO_URI } = process.env;
 
 // Json and Cors (http and header handlers)
 app.use(express.json({extended: false}));
-app.use(cors({origin: "*", Credential: true, methods: ["GET", "POST", "PUT", "DELETE"]}));
+app.use(cors({
+    origin: "https://event-management-dq2k.vercel.app", // Change this to your frontend's URL
+    credentials: true, // Allow credentials (such as cookies)
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+}));
+
+app.options('*', cors({
+    origin: "https://event-management-dq2k.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE"]
+}));
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello</h1>')
