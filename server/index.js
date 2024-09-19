@@ -11,19 +11,23 @@ const { PORT, MONGO_URI } = process.env;
 // Json and Cors (http and header handlers)
 app.use(express.json({extended: false}));
 app.use(cors({
-    origin: "https://event-management-dq2k.vercel.app", // Your frontend URL
-    credentials: true, // Allow credentials such as cookies
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"] // Ensure correct headers are allowed
+    origin: "*", // Allow requests from any origin
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allow specific HTTP methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow specific headers
+    exposedHeaders: ["x-access-token"] // Expose specific headers (optional)
 }));
 
-// Handle preflight requests for all routes
+// Handle preflight requests
 app.options('*', cors({
-    origin: "https://event-management-dq2k.vercel.app",
-    credentials: true,
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+    allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
+// Test route
+app.get('/', (req, res) => {
+    res.send('<h1>Hello</h1>');
+});
 
 app.get('/', (req, res) => {
     res.send('<h1>Hello</h1>')
